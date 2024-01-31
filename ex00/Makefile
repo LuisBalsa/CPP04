@@ -1,0 +1,45 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/26 13:02:10 by luide-so          #+#    #+#              #
+#    Updated: 2024/01/31 18:18:21 by luide-so         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = animal
+
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+INCLUDES = Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
+
+DEPS_PATH = includes/
+DEPS = $(addprefix $(DEPS_PATH), $(INCLUDES))
+VPATH = src/
+OBJ_PATH = obj/
+OBJ = $(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
+
+CC = c++
+
+FLAGS = -Wall -Wextra -Werror -pedantic -std=c++98
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME) -I $(DEPS_PATH)
+
+$(OBJ_PATH)%.o: %.cpp $(DEPS)
+	@mkdir -p $(OBJ_PATH)
+	$(CC) $(FLAGS) -c $< -o $@ -I $(DEPS_PATH)
+
+clean:
+	rm -rf $(OBJ_PATH)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
