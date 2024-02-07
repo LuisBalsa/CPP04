@@ -17,7 +17,7 @@ Builds on polymorphism by introducing dynamic memory allocation and deep copying
 Focuses on abstract classes, making the default `Animal` class abstract to prevent instantiation. Ensures that only derived classes (`Dog`, `Cat`) can be instantiated, emphasizing the concept of abstraction and interface design.
 
 ### Exercise 03: Interfaces
-Introduces interfaces using pure abstract classes. Involves implementing interfaces for various classes (`AMateria`, `ICharacter`, `IMateriaSource`) to demonstrate polymorphic behavior and dynamic dispatch. Emphasizes interface design and polymorphism. For more detailed information and tips, visit the [ex03 subfolder](https://github.com/LuisBalsa/CPP04/tree/main/ex03).
+Introduces interfaces using pure abstract classes. Involves implementing interfaces for various classes (`AMateria`, `ICharacter`, `IMateriaSource`) to demonstrate polymorphic behavior and dynamic dispatch. Emphasizes interface design and polymorphism. For more detailed information, visit the [ex03 subfolder](https://github.com/LuisBalsa/CPP04/tree/main/ex03).
 
 ## Building
 To compile the code, use the provided Makefile. Navigate to the exercise directory (`ex00`, `ex01`, etc.) and run `make` command in the terminal.
