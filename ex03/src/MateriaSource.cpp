@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 23:27:20 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 16:21:58 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:56:12 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,18 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &src)
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if (!m || m->getIsEquipped() || m->getIsLearned())
-		return (std::cout << "Materia has already been equipped or learned\n", void());
+	if (!m || m->getIsTaken())
+		return (std::cout << "Materia has already been taken\n", void());
 	for (int i = 0; i < 4; i++)
 	{
 		if (!this->learned[i])
 		{
 			this->learned[i] = m;
-			m->setIsLearned();
+			m->setIsTaken();
 			return ;
 		}
 	}
+	m->setIsTaken();
 	Floor::dropMateria(m);
 }
 

@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 00:02:38 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 15:52:10 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:58:55 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,9 +141,9 @@ void	deepCopyTests(void)
 	checked();
 }
 
-void	limitsTestsUsingLoops(void)
+void	limitsTests(void)
 {
-	titleHeader("Limits tests using loops");
+	titleHeader("Limits tests");
 
 	subTitle("Creating a new MateriaSource and learning Ice and Cure");
 	IMateriaSource* src = new MateriaSource();
@@ -153,6 +153,7 @@ void	limitsTestsUsingLoops(void)
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
 	}
+	checked();
 
 	subTitle("Creating a new Character me");
 	ICharacter* me = new Character("me");
@@ -160,7 +161,7 @@ void	limitsTestsUsingLoops(void)
 
 	subTitle("Adding Ice and Cure to the Character's me inventory");
 	AMateria* tmp;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		std::cout << "\n\tCreating a new Ice and Cure and equipping them" << std::endl;
 		tmp = src->createMateria("ice");
@@ -179,7 +180,52 @@ void	limitsTestsUsingLoops(void)
 
 	subTitle("Deleting the Character");
 	delete me;
+	checked();
+
+	subTitle("Deleting the MateriaSource");
 	delete src;
+	checked();
+
+	subTitle("Clearing the Floor");
+	Floor::clean();
+	checked();
+}
+
+void	unequipTests(void)
+{
+	titleHeader("Unequip tests");
+
+	subTitle("Creating a new Character me");
+	ICharacter* me = new Character("me");
+	checked();
+
+	subTitle("Directly equipping Ice and Cure to the Character's me inventory in loop");
+	for (int i = 0; i < 5; i++)
+	{
+		AMateria* tmp;
+		if (i % 2 == 0)
+			tmp = new Ice();
+		else
+			tmp = new Cure();
+		me->equip(tmp);
+	}
+	checked();
+
+	subTitle("Using the Character's me materias on itself");
+	for (int i = 0; i < 4; i++)
+	{
+		me->use(i, *me);
+	}
+
+	subTitle("Unequipping the Character's me first 3 materias");
+	for (int i = 0; i < 3; i++)
+	{
+		me->unequip(i);
+	}
+	checked();
+
+	subTitle("Deleting the Character");
+	delete me;
 	checked();
 }
 
@@ -188,6 +234,7 @@ int main()
 	std::cout << "\033c";
 	subjectTests();
 	deepCopyTests();
-	limitsTestsUsingLoops();
+	limitsTests();
+	unequipTests();
 	return 0;
 }

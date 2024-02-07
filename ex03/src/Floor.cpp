@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 21:58:14 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 15:17:49 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:10:56 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,7 @@ Floor::Floor()
 Floor::~Floor()
 {
 	LOG("Floor destructor called");
-	MateriaList *tmp;
-
-	while (list)
-	{
-		tmp = list;
-		list = list->next;
-		delete tmp->materia;
-		delete tmp;
-	}
+	cleanFloor();
 }
 
 Floor& Floor::getInstance()
@@ -52,4 +44,23 @@ void Floor::addMateria(AMateria* materia)
 void Floor::dropMateria(AMateria* materia)
 {
 	getInstance().addMateria(materia);
+}
+
+void Floor::cleanFloor()
+{
+	LOG("Cleaning the floor");
+	MateriaList *tmp;
+
+	while (list)
+	{
+		tmp = list;
+		list = list->next;
+		delete tmp->materia;
+		delete tmp;
+	}
+}
+
+void Floor::clean()
+{
+	getInstance().cleanFloor();
 }

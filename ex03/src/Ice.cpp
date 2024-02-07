@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 20:35:26 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 16:13:54 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:57:14 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ Ice::Ice() : AMateria("ice")
 Ice::Ice(const Ice &src) : AMateria(src)
 {
 	LOG("Ice copy constructor called");
-	this->isEquipped = false;
-	this->isLearned = false;
+	this->isTaken = false;
 	*this = src;
 }
 

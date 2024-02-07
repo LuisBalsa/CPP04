@@ -6,13 +6,13 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 20:16:40 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 15:16:21 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:53:33 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const & type) : type(type), isEquipped(false), isLearned(false)
+AMateria::AMateria(std::string const & type) : type(type), isTaken(false)
 {
 	LOG("AMateria constructor called");
 }
@@ -36,24 +36,14 @@ std::string const & AMateria::getType() const
 	return (type);
 }
 
-bool AMateria::getIsEquipped() const
+bool AMateria::getIsTaken() const
 {
-	return (isEquipped);
+	return (isTaken);
 }
 
-void AMateria::setIsEquipped()
+void AMateria::setIsTaken()
 {
-	isEquipped = true;
-}
-
-bool AMateria::getIsLearned() const
-{
-	return (isLearned);
-}
-
-void AMateria::setIsLearned()
-{
-	isLearned = true;
+	isTaken = true;
 }
 
 void AMateria::use(ICharacter& target)

@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 20:27:33 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 16:13:36 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:57:04 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ Cure::Cure() : AMateria("cure")
 Cure::Cure(const Cure &src) : AMateria(src)
 {
 	LOG("Cure copy constructor called");
-	this->isEquipped = false;
-	this->isLearned = false;
+	this->isTaken = false;
 	*this = src;
 }
 

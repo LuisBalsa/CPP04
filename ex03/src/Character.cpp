@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:25:49 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 16:21:15 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:55:23 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,28 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	if (!m || m->getIsEquipped() || m->getIsLearned())
-		return (std::cout << "Materia has already been equipped or learned\n", void());
+	if (!m || m->getIsTaken())
+		return (std::cout << "Materia has already been taken\n", void());
 	for (int i = 0; i < 4; i++)
 	{
 		if (!inventory[i])
 		{
 			inventory[i] = m;
-			m->setIsEquipped();
+			m->setIsTaken();
 			return;
 		}
 	}
+	m->setIsTaken();
 	Floor::dropMateria(m);
 }
 
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4 && inventory[idx])
+	{
 		Floor::dropMateria(inventory[idx]);
+		inventory[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)

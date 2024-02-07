@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 14:11:41 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 15:20:40 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:54:37 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ class AMateria
 {
 	protected:
 		std::string	type;
-		bool		isEquipped;
-		bool		isLearned;
+		bool		isTaken;
 
 	public:
 		AMateria(std::string const & type);
@@ -41,10 +40,8 @@ class AMateria
 
 		std::string const & getType() const;
 
-		bool getIsEquipped() const;
-		void setIsEquipped();
-		bool getIsLearned() const;
-		void setIsLearned();
+		bool getIsTaken() const;
+		void setIsTaken();
 
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);

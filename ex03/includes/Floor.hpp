@@ -6,7 +6,7 @@
 /*   By: luide-so <luide-so@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 21:49:32 by luide-so          #+#    #+#             */
-/*   Updated: 2024/02/07 15:38:19 by luide-so         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:38:07 by luide-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ class Floor
 		MateriaList	*list;
 		Floor();
 		Floor(const Floor &src);
-		Floor& operator=(const Floor &rhs);
 		~Floor();
+		Floor& operator=(const Floor &rhs);
 		void addMateria(AMateria* materia);
+		void cleanFloor();
 		static Floor& getInstance();
 
 	public:
 		static void dropMateria(AMateria* materia);
+		static void clean();
 };
 
 #endif
