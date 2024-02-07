@@ -33,7 +33,7 @@ This will compile the source files and create an executable.
 After compilation, execute the program by running the generated executable. For example:
 
 ```
-./ex00.out
+./a.out
 ```
 
 This will run the program and execute the tests defined in the `main()` function.
