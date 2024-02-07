@@ -60,7 +60,7 @@ In Exercise 03, it's essential to understand the memory management requirements 
    - For example, when a Materia is learned by a MateriaSource or equipped by a Character, it should be allocated dynamically to ensure its lifetime is managed properly.
 
 2. **Unequip Functionality**:
-   - The `unequip()` function in the `Character` class should not delete the Materias it removes from the inventory. Instead, you should keep track of the Materias and their positions in the inventory for later deletion. (Requested in subject)
+   - The `unequip()` function in the `Character` class should not delete the Materias it removes from the inventory. Instead, you should keep track of the Materias for later deletion. (Requested in subject)
 
 3. **Memory Deallocation**:
    - Memory allocated for Materias should be properly deallocated to avoid memory leaks.
@@ -84,7 +84,7 @@ My solution for the requirement of not deleting Materias immediately upon unequi
 
 4. **Later Deletion**:
    - The `Floor` singleton keeps track of all dropped Materias until they are explicitly deleted.
-   - During program shutdown or at any appropriate time, the `cleanFloor()` function can be called to delete all the dropped Materias from the `Floor`.
+   - During program shutdown (Floor destructor) or at any appropriate time, the `cleanFloor()` function can be called to delete all the dropped Materias from the `Floor`.
    - By delaying the deletion of dropped Materias until this cleanup step, you ensure that memory is managed efficiently and no memory leaks occur.
 
 
